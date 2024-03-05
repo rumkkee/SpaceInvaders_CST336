@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private int _pointValue;
 
-    // Update is called once per frame
-    void Update()
+    public delegate void EnemyDefeated(int points);
+    public static event EnemyDefeated OnDefeat;
+
+    public void Defeat()
     {
-        
+        OnDefeat(_pointValue);
+        Destroy(this.gameObject);
     }
 }

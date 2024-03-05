@@ -731,8 +731,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalNudgeDistance: 0.2
   verticalNudgeDistance: 0.7
-  startNudgeDelay: 0.2
+  startNudgeDelay: 1.5
   endNudgeDelay: 0.1
+  currentNudgeDelay: 0
   enemiesPerWave: 10
   distanceBetweenEnemies: 2.3
   leftWall: {fileID: 1764520280}
@@ -743,6 +744,8 @@ MonoBehaviour:
   - {fileID: 7989655615709805428, guid: e1a341d782e0c94448736616336beb2b, type: 3}
   - {fileID: 4805266759424946894, guid: 34ca129fe777a91438d785f43d55b37c, type: 3}
   - {fileID: 4805266759424946894, guid: 34ca129fe777a91438d785f43d55b37c, type: 3}
+  startingEnemyCount: 0
+  enemyCount: 0
 --- !u!1 &1213829299
 GameObject:
   m_ObjectHideFlags: 0

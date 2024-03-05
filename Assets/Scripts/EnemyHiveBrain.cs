@@ -10,6 +10,7 @@ public class EnemyHiveBrain : MonoBehaviour
 
     public float startNudgeDelay;
     public float endNudgeDelay;
+    public float currentNudgeDelay;
 
     [Header("Enemy Instantiation")]
     public int enemiesPerWave;
@@ -19,6 +20,9 @@ public class EnemyHiveBrain : MonoBehaviour
     public GameObject rightWall;
 
     public List<Enemy> waves;
+
+    public int startingEnemyCount;
+    public int enemyCount;
 
     private Vector2 direction;
 
@@ -31,6 +35,7 @@ public class EnemyHiveBrain : MonoBehaviour
             instance = this;
         }
         Enemy.OnWallHit += OnWallHit;
+        Enemy.OnDefeat += OnEnemyDefeated;
     }
 
     #region Setup
@@ -39,6 +44,7 @@ public class EnemyHiveBrain : MonoBehaviour
         transform.position = new Vector2(leftWall.transform.position.x + distanceBetweenEnemies, transform.position.y);
         if (waves != null)
         {
+            currentNudgeDelay = startNudgeDelay;
             InstantiateWaves();
             direction = Vector2.right;
         }
@@ -54,9 +60,11 @@ public class EnemyHiveBrain : MonoBehaviour
             {
                 Vector2 spawnPos = new Vector2(i * distanceBetweenEnemies + transform.position.x, currentWaveHeight + transform.position.y);
                 Enemy enemy = Instantiate(enemyTypeByWave, spawnPos, Quaternion.identity, transform);
+                startingEnemyCount++;
             }
             currentWaveHeight -= verticalNudgeDistance * 2;
         }
+        enemyCount = startingEnemyCount;
     }
     #endregion
 
@@ -66,7 +74,7 @@ public class EnemyHiveBrain : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(startNudgeDelay);
+            yield return new WaitForSeconds(currentNudgeDelay);
             NudgeHiveHorizontal();
         }
     }
@@ -88,9 +96,21 @@ public class EnemyHiveBrain : MonoBehaviour
     }
     private void NudgeHiveVertical()
     {
-        Debug.Log("tPos: " + transform.position);
-        Debug.Log("T Local Pos: " + transform.localPosition);
         transform.localPosition = new Vector2(transform.position.x, transform.localPosition.y - verticalNudgeDistance);
+    }
+
+    private void ReviseCurrentNudgeDelay()
+    {
+        currentNudgeDelay = Mathf.Lerp(endNudgeDelay, startNudgeDelay, enemyCount / (float)startingEnemyCount);
+    }
+
+    private void OnEnemyDefeated(int points)
+    {
+        if(points <= 30)
+        {
+            enemyCount--;
+            ReviseCurrentNudgeDelay();
+        }
     }
 
     #endregion

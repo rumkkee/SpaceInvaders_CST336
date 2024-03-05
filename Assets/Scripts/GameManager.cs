@@ -23,6 +23,6 @@ public class GameManager : MonoBehaviour
 
     private void StartGame()
     {
-        EnemyHiveBrain.instance.StartRound();
+        EnemyManager.instance.StartRound();
     }
 }

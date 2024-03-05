@@ -146,8 +146,7 @@ public class EnemyHiveBrain : MonoBehaviour
         enemies.Remove(enemy);
         if(enemies.Count == 0)
         {
-            StopAllCoroutines();
-            Debug.Log("Space is now <b>purified.</b> Nobody came.");
+            EnemyManager.instance.EndRound();
         }
     }
     #endregion

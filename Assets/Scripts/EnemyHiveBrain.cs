@@ -92,6 +92,7 @@ public class EnemyHiveBrain : MonoBehaviour
         {
             direction = newDirection;
             NudgeHiveVertical();
+            NudgeHiveHorizontal();
         }
     }
     private void NudgeHiveVertical()

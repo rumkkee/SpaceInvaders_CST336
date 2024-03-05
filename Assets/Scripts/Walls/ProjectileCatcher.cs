@@ -6,7 +6,7 @@ public class ProjectileCatcher : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D other)
     {
-        PlayerProjectile projectile = other.gameObject.GetComponent<PlayerProjectile>();
+        Projectile projectile = other.gameObject.GetComponent<Projectile>();
         if(projectile != null)
         {
             Destroy(projectile.gameObject);

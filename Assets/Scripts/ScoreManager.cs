@@ -10,6 +10,8 @@ public class ScoreManager : MonoBehaviour
     private int _currentScore;
     private int _hiScore;
 
+    private string _highScoreKey = "hiScore";
+
     private void Awake()
     {
         Enemy.OnDefeat += AddToScore;
@@ -43,11 +45,14 @@ public class ScoreManager : MonoBehaviour
 
         string scoreFormatted = _hiScore.ToString("0000");
         _hiScoreText.text = $"HI SCORE\n {scoreFormatted}";
+
+        PlayerPrefs.SetInt(_highScoreKey, _hiScore);
     }
 
     private void LoadHighScore()
     {
-
+        _hiScore = PlayerPrefs.GetInt(_highScoreKey);
+        SetHighScore(_hiScore);
     }
 
     private void OnDestroy()

@@ -10,9 +10,9 @@ public class GameManager : MonoBehaviour
     private IEnumerator Start()
     {
         ToggleStartScreen(true);
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(2.5f);
         ToggleStartScreen(false);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         StartGame();
     }
 
@@ -23,6 +23,6 @@ public class GameManager : MonoBehaviour
 
     private void StartGame()
     {
-
+        EnemyHiveBrain.instance.StartRound();
     }
 }

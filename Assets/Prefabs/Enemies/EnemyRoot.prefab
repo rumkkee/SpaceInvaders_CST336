@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: -8395274157895222720}
   - component: {fileID: -7830221337579389374}
   - component: {fileID: -1713440524808313673}
-  m_Layer: 0
+  - component: {fileID: 4080031810487987267}
+  m_Layer: 7
   m_Name: EnemyRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +159,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &-1713440524808313673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,3 +172,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cef485619338284dbbd4e2aee6527c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pointValue: 0
+--- !u!114 &4080031810487987267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7389259123282059595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85767bca3d962864197fe9e7de7a4de5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upperFireDelay: 5
+  lowerFireDelay: 1
+  projectilePrefab: {fileID: -1980785615732952935, guid: ad28d0d3e109b8049a0b72ad17ef4c74,
+    type: 3}

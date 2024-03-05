@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3068954945153570425
+--- !u!1001 &7494602301744818321
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -11,17 +11,12 @@ PrefabInstance:
     - target: {fileID: -8395274157895222720, guid: 3a410bf66fa7cae4ea56a0d7985d9470,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 2.6104207
+      value: 2.650427
       objectReference: {fileID: 0}
     - target: {fileID: -8395274157895222720, guid: 3a410bf66fa7cae4ea56a0d7985d9470,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.76
-      objectReference: {fileID: 0}
-    - target: {fileID: -1713440524808313673, guid: 3a410bf66fa7cae4ea56a0d7985d9470,
-        type: 3}
-      propertyPath: _pointValue
-      value: 10
+      value: 1.2500001
       objectReference: {fileID: 0}
     - target: {fileID: 1390111859790677657, guid: 3a410bf66fa7cae4ea56a0d7985d9470,
         type: 3}
@@ -77,15 +72,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 98053441, guid: b0dcc81ef58b1ee40b2259aba6f0d639,
+      objectReference: {fileID: -153639563, guid: b0dcc81ef58b1ee40b2259aba6f0d639,
         type: 3}
     - target: {fileID: 7389259123282059595, guid: 3a410bf66fa7cae4ea56a0d7985d9470,
         type: 3}
       propertyPath: m_Name
-      value: Enemy_10pts Variant
+      value: UFO Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -1713440524808313673, guid: 3a410bf66fa7cae4ea56a0d7985d9470, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7389259123282059595, guid: 3a410bf66fa7cae4ea56a0d7985d9470,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3428910218068341000}
   m_SourcePrefab: {fileID: 100100000, guid: 3a410bf66fa7cae4ea56a0d7985d9470, type: 3}
+--- !u!1 &1047580663153789402 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7389259123282059595, guid: 3a410bf66fa7cae4ea56a0d7985d9470,
+    type: 3}
+  m_PrefabInstance: {fileID: 7494602301744818321}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3428910218068341000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047580663153789402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5248f0a3dad72df4c95de349d0077bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pointValue: 0
+  pointValues: 3200000064000000c8000000
+  _moveSpeed: 4

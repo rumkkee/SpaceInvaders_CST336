@@ -1257,11 +1257,14 @@ MonoBehaviour:
   leftWall: {fileID: 1764520280}
   rightWall: {fileID: 452674412}
   waves:
-  - {fileID: 2609922222278568975, guid: 438b67ef1de5d8045b19bca604799212, type: 3}
-  - {fileID: 7989655615709805428, guid: e1a341d782e0c94448736616336beb2b, type: 3}
-  - {fileID: 7989655615709805428, guid: e1a341d782e0c94448736616336beb2b, type: 3}
-  - {fileID: 4805266759424946894, guid: 34ca129fe777a91438d785f43d55b37c, type: 3}
-  - {fileID: 4805266759424946894, guid: 34ca129fe777a91438d785f43d55b37c, type: 3}
+  - {fileID: 6124380569717674927, guid: 5747053d642e2c94483b014985356a38, type: 3}
+  - {fileID: 2289304006108736515, guid: d158bf24cb56f8d4b9f9e0b8dfb4ae3a, type: 3}
+  - {fileID: 2289304006108736515, guid: d158bf24cb56f8d4b9f9e0b8dfb4ae3a, type: 3}
+  - {fileID: 561319725080030921, guid: 653b653c46ecaca4facf7ad81758cdf8, type: 3}
+  - {fileID: 561319725080030921, guid: 653b653c46ecaca4facf7ad81758cdf8, type: 3}
+  enemies: []
+  upperFireDelay: 5
+  lowerFireDelay: 1
   startingEnemyCount: 0
   enemyCount: 0
 --- !u!1001 &968714575

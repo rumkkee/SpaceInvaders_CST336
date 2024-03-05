@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyHiveBrain : MonoBehaviour
 {
@@ -21,6 +22,12 @@ public class EnemyHiveBrain : MonoBehaviour
 
     public List<Enemy> waves;
 
+    public List<Enemy> enemies;
+
+    [Header("Enemy Fire Params")]
+    public float upperFireDelay;
+    public float lowerFireDelay;
+
     public int startingEnemyCount;
     public int enemyCount;
 
@@ -36,12 +43,14 @@ public class EnemyHiveBrain : MonoBehaviour
         }
         Enemy.OnWallHit += OnWallHit;
         Enemy.OnDefeat += OnEnemyDefeated;
+        HiveEnemy.OnHiveEnemyDestroyed += RemoveEnemy;
     }
 
     #region Setup
     public void StartRound()
     {
         transform.position = new Vector2(leftWall.transform.position.x + distanceBetweenEnemies, transform.position.y);
+        enemies = new List<Enemy>();
         if (waves != null)
         {
             currentNudgeDelay = startNudgeDelay;
@@ -49,6 +58,7 @@ public class EnemyHiveBrain : MonoBehaviour
             direction = Vector2.right;
         }
         StartCoroutine(VerticalMovement());
+        StartCoroutine(FireTimer());
     }
 
     private void InstantiateWaves()
@@ -60,6 +70,7 @@ public class EnemyHiveBrain : MonoBehaviour
             {
                 Vector2 spawnPos = new Vector2(i * distanceBetweenEnemies + transform.position.x, currentWaveHeight + transform.position.y);
                 Enemy enemy = Instantiate(enemyTypeByWave, spawnPos, Quaternion.identity, transform);
+                enemies.Add(enemy);
                 startingEnemyCount++;
             }
             currentWaveHeight -= verticalNudgeDistance * 2;
@@ -115,4 +126,34 @@ public class EnemyHiveBrain : MonoBehaviour
     }
 
     #endregion
+
+    #region Firing
+    private IEnumerator FireTimer()
+    {
+        while (true)
+        {
+            float delay = Random.Range(lowerFireDelay, upperFireDelay);
+            yield return new WaitForSeconds(delay);
+            int enemyCount = enemies.Count;
+            int randIndex = Random.Range(0, enemyCount);
+            Debug.Log("Enemy index: " + randIndex);
+            enemies[randIndex].GetComponent<EnemyFire>().Fire();
+        }
+    }
+
+    private void RemoveEnemy(Enemy enemy)
+    {
+        enemies.Remove(enemy);
+        if(enemies.Count == 0)
+        {
+            StopAllCoroutines();
+            Debug.Log("Space is now <b>purified.</b> Nobody came.");
+        }
+    }
+    #endregion
+
+    private void OnDestroy()
+    {
+        
+    }
 }

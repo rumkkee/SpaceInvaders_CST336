@@ -12,7 +12,8 @@ public class PlayerFire : MonoBehaviour
     {
         if(_projectileInstance == null)
         {
-            _projectileInstance = Instantiate(_projectilePrefab, transform.position, Quaternion.identity, this.transform);
+            Vector2 spawnPos = new Vector2(transform.position.x, transform.position.y + 1f);
+            _projectileInstance = Instantiate(_projectilePrefab, spawnPos, Quaternion.identity, this.transform);
         }
     }
 }

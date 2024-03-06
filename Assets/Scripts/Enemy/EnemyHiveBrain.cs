@@ -5,33 +5,30 @@ using Random = UnityEngine.Random;
 
 public class EnemyHiveBrain : MonoBehaviour
 {
-    [Header("Enemy Movement")]
+    [Header("Enemy Instantiation")]
+    public int enemiesPerWave;
+    public float distanceBetweenEnemies;
+    
+    [Header("Enemy Movement: Increment")]
     public float horizontalNudgeDistance;
     public float verticalNudgeDistance;
 
+    [Header("Enemy Movement: Rate")]
     public float startNudgeDelay;
     public float endNudgeDelay;
     public float currentNudgeDelay;
 
-    [Header("Enemy Instantiation")]
-    public int enemiesPerWave;
-    public float distanceBetweenEnemies;
-
-    public GameObject leftWall;
-    public GameObject rightWall;
-
-    public List<Enemy> waves;
-
-    public List<Enemy> enemies;
-
-    [Header("Enemy Fire Params")]
+    [Header("Enemy Fire")]
     public float upperFireDelay;
     public float lowerFireDelay;
 
-    public int startingEnemyCount;
-    public int enemyCount;
+    [Header("Wave List / Enemy Type")]
+    public List<Enemy> waves;
 
-    private Vector2 direction;
+    private int _startingEnemyCount;
+    private List<Enemy> _enemies;
+
+    private Vector2 _moveDirection;
 
     public static EnemyHiveBrain instance;
 
@@ -41,21 +38,22 @@ public class EnemyHiveBrain : MonoBehaviour
         {
             instance = this;
         }
-        Enemy.OnWallHit += OnWallHit;
-        Enemy.OnDefeat += OnEnemyDefeated;
-        HiveEnemy.OnHiveEnemyDestroyed += RemoveEnemy;
+
+        HiveEnemy.OnWallHit += OnWallHit;
+        HiveEnemy.OnHiveEnemyDestroyed += OnEnemyDefeated;
     }
 
-    #region Setup
+    #region Wave Setup
     public void StartRound()
     {
-        transform.position = new Vector2(leftWall.transform.position.x + distanceBetweenEnemies, transform.position.y);
-        enemies = new List<Enemy>();
+        float leftWallPosX = ResourceManager.instance.leftWall.transform.position.x;
+        transform.position = new Vector2(leftWallPosX + distanceBetweenEnemies, transform.position.y);
+        _enemies = new List<Enemy>();
         if (waves != null)
         {
             currentNudgeDelay = startNudgeDelay;
             InstantiateWaves();
-            direction = Vector2.right;
+            _moveDirection = Vector2.right;
         }
         StartCoroutine(VerticalMovement());
         StartCoroutine(FireTimer());
@@ -70,12 +68,11 @@ public class EnemyHiveBrain : MonoBehaviour
             {
                 Vector2 spawnPos = new Vector2(i * distanceBetweenEnemies + transform.position.x, currentWaveHeight + transform.position.y);
                 Enemy enemy = Instantiate(enemyTypeByWave, spawnPos, Quaternion.identity, transform);
-                enemies.Add(enemy);
-                startingEnemyCount++;
+                _enemies.Add(enemy);
+                _startingEnemyCount++;
             }
             currentWaveHeight -= verticalNudgeDistance * 2;
         }
-        enemyCount = startingEnemyCount;
     }
     #endregion
 
@@ -92,16 +89,16 @@ public class EnemyHiveBrain : MonoBehaviour
 
     private void NudgeHiveHorizontal()
     {
-        float horizontalNudge = (direction == Vector2.right) ? horizontalNudgeDistance : -horizontalNudgeDistance;
+        float horizontalNudge = (_moveDirection == Vector2.right) ? horizontalNudgeDistance : -horizontalNudgeDistance;
         transform.position = new Vector2(transform.position.x + horizontalNudge, transform.position.y);
     }
 
     private void OnWallHit(Vector2 newDirection)
     {
         // Accounts for the event that multiple enemies hit the wall
-        if(direction != newDirection)
+        if(_moveDirection != newDirection)
         {
-            direction = newDirection;
+            _moveDirection = newDirection;
             NudgeHiveVertical();
             NudgeHiveHorizontal();
         }
@@ -113,17 +110,11 @@ public class EnemyHiveBrain : MonoBehaviour
 
     private void ReviseCurrentNudgeDelay()
     {
-        currentNudgeDelay = Mathf.Lerp(endNudgeDelay, startNudgeDelay, enemyCount / (float)startingEnemyCount);
+        float currentEnemyCount = _enemies.Count;
+        currentNudgeDelay = Mathf.Lerp(endNudgeDelay, startNudgeDelay, currentEnemyCount / (float)_startingEnemyCount);
     }
 
-    private void OnEnemyDefeated(int points)
-    {
-        if(points <= 30)
-        {
-            enemyCount--;
-            ReviseCurrentNudgeDelay();
-        }
-    }
+    
 
     #endregion
 
@@ -134,25 +125,28 @@ public class EnemyHiveBrain : MonoBehaviour
         {
             float delay = Random.Range(lowerFireDelay, upperFireDelay);
             yield return new WaitForSeconds(delay);
-            int enemyCount = enemies.Count;
+            int enemyCount = _enemies.Count;
             int randIndex = Random.Range(0, enemyCount);
-            Debug.Log("Enemy index: " + randIndex);
-            enemies[randIndex].GetComponent<EnemyFire>().Fire();
+            _enemies[randIndex].GetComponent<EnemyFire>().Fire();
         }
+    }
+    #endregion
+
+    #region Enemy Death
+    private void OnEnemyDefeated(Enemy enemy)
+    {
+        RemoveEnemy(enemy);
+        ReviseCurrentNudgeDelay();      
     }
 
     private void RemoveEnemy(Enemy enemy)
     {
-        enemies.Remove(enemy);
-        if(enemies.Count == 0)
+        _enemies.Remove(enemy);
+        if(_enemies.Count == 0)
         {
             EnemyManager.instance.EndRound();
         }
     }
     #endregion
 
-    private void OnDestroy()
-    {
-        
-    }
 }

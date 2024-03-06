@@ -19,6 +19,14 @@ public class ScoreManager : MonoBehaviour
         LoadHighScore();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SetHighScore(0);
+        }
+    }
+
     private void AddToScore(int scoreToAdd)
     {
         _currentScore += scoreToAdd;

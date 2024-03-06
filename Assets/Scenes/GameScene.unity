@@ -1964,7 +1964,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbda15c3ecb56c148a16a275aea50bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scorePanel: {fileID: 1764653671}
 --- !u!4 &1365734069 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8782294283527437459, guid: d54f8713c76d83440a1580bbff5f1824,
@@ -2724,6 +2723,7 @@ GameObject:
   - component: {fileID: 1764653675}
   - component: {fileID: 1764653674}
   - component: {fileID: 1764653676}
+  - component: {fileID: 1764653677}
   m_Layer: 5
   m_Name: ScoreAdvancePanel
   m_TagString: Untagged
@@ -2819,6 +2819,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1764653677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764653671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc4c118aed67a924f92575f0dab56ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1778342500
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,10 +7,11 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject _scorePanel;
 
+
     private IEnumerator Start()
     {
         ToggleStartScreen(true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.5f);
         ToggleStartScreen(false);
         yield return new WaitForSeconds(0.5f);
         StartGame();

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -7830221337579389374}
   - component: {fileID: -1713440524808313673}
   - component: {fileID: 4080031810487987267}
+  - component: {fileID: 7667537966049996755}
   m_Layer: 7
   m_Name: EnemyRoot
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1366891284, guid: b0dcc81ef58b1ee40b2259aba6f0d639, type: 3}
+  m_Sprite: {fileID: 1868420884, guid: 4433b6ff74c08e945ac7d06b8b78787c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -120,18 +121,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.02}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.3603804, y: 1.7800001}
+    oldSize: {x: 1.71875, y: 1.875}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.3603804, y: 1.7800001}
+  m_Size: {x: 1.7, y: 1.2}
   m_EdgeRadius: 0
 --- !u!50 &-7830221337579389374
 Rigidbody2D:
@@ -185,7 +186,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85767bca3d962864197fe9e7de7a4de5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upperFireDelay: 5
-  lowerFireDelay: 1
   projectilePrefab: {fileID: -1980785615732952935, guid: ad28d0d3e109b8049a0b72ad17ef4c74,
     type: 3}
+--- !u!95 &7667537966049996755
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7389259123282059595}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

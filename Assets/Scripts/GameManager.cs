@@ -1,15 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _scorePanel;
+    public static GameManager instance;
 
-
-    private IEnumerator Start()
+    private void Awake()
     {
+        if(instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("GameScene"))
+        {
+            StartCoroutine(OnGameStart());
+        }
+        else if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("CreditsScene"))
+        {
+            StartCoroutine(OnCreditsSceneStart());
+        }
+
+
+    }
+
+    private IEnumerator OnGameStart()
+    {
+        yield return new WaitForSeconds(0.5f);
         ToggleStartScreen(true);
         yield return new WaitForSeconds(1.5f);
         ToggleStartScreen(false);
@@ -19,11 +45,60 @@ public class GameManager : MonoBehaviour
 
     private void ToggleStartScreen(bool isEnabled)
     {
-        _scorePanel.gameObject.SetActive(isEnabled);
+        ScoreAdvancePanel.instance.gameObject.SetActive(isEnabled);
     }
 
     private void StartGame()
     {
         EnemyManager.instance.StartRound();
+    }
+
+    public void LoadGameScene()
+    {
+        SceneManager.LoadScene("GameScene");
+        //StartCoroutine(LoadGameSceneHelper());
+    }
+
+    // Not in use, but keeping for reference
+    public IEnumerator LoadGameSceneHelper()
+    {
+        AsyncOperation asyncOp = SceneManager.LoadSceneAsync("GameScene");
+        while (!asyncOp.isDone)
+        {
+            yield return null;
+        }
+        StartCoroutine(OnGameStart());
+    }
+
+    public void OnPlayerDefeated()
+    {
+        StartCoroutine(EndGameRoutine());
+    }
+
+    public IEnumerator EndGameRoutine()
+    {
+        Destroy(Player.instance.gameObject);
+        yield return new WaitForSeconds(1f);
+        yield return StartCoroutine(WaitForLoadScene("CreditsScene"));
+        Debug.Log("Entered Credits");
+
+        yield return StartCoroutine(OnCreditsSceneStart());
+    }
+
+    public IEnumerator OnCreditsSceneStart()
+    {
+        Debug.Log("In Credits");
+        yield return new WaitForSeconds(4f);
+        yield return StartCoroutine(WaitForLoadScene("MainMenu"));
+        Debug.Log("In Main Menu");
+    }
+
+    public IEnumerator WaitForLoadScene(string sceneName)
+    {
+        AsyncOperation asyncOp = SceneManager.LoadSceneAsync(sceneName);
+        while (!asyncOp.isDone)
+        {
+            yield return null;
+        }
     }
 }

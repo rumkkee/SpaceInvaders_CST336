@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
         if(instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(this.gameObject);
         }
         else
         {
@@ -24,7 +25,12 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(OnGameStart());
         }
- 
+        else if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("CreditsScene"))
+        {
+            StartCoroutine(OnCreditsSceneStart());
+        }
+
+
     }
 
     private IEnumerator OnGameStart()
@@ -62,5 +68,37 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
         StartCoroutine(OnGameStart());
+    }
+
+    public void OnPlayerDefeated()
+    {
+        StartCoroutine(EndGameRoutine());
+    }
+
+    public IEnumerator EndGameRoutine()
+    {
+        Destroy(Player.instance.gameObject);
+        yield return new WaitForSeconds(1f);
+        yield return StartCoroutine(WaitForLoadScene("CreditsScene"));
+        Debug.Log("Entered Credits");
+
+        yield return StartCoroutine(OnCreditsSceneStart());
+    }
+
+    public IEnumerator OnCreditsSceneStart()
+    {
+        Debug.Log("In Credits");
+        yield return new WaitForSeconds(4f);
+        yield return StartCoroutine(WaitForLoadScene("MainMenu"));
+        Debug.Log("In Main Menu");
+    }
+
+    public IEnumerator WaitForLoadScene(string sceneName)
+    {
+        AsyncOperation asyncOp = SceneManager.LoadSceneAsync(sceneName);
+        while (!asyncOp.isDone)
+        {
+            yield return null;
+        }
     }
 }

@@ -403,7 +403,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 280117325}
-  - component: {fileID: 280117326}
+  - component: {fileID: 280117327}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -426,7 +426,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &280117326
+--- !u!114 &280117327
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -435,7 +435,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 280117324}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9870b8c7cfc61254ebcdc9778ce7a805, type: 3}
+  m_Script: {fileID: 11500000, guid: fbda15c3ecb56c148a16a275aea50bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &442600638
@@ -923,7 +923,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 280117326}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: LoadGame
         m_Mode: 1

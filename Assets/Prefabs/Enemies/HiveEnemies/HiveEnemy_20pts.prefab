@@ -17,12 +17,12 @@ PrefabInstance:
     - target: {fileID: 3398808242058423076, guid: 69c69b673c43f1047a349ac8f1925629,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.1
+      value: 1.71875
       objectReference: {fileID: 0}
     - target: {fileID: 3398808242058423076, guid: 69c69b673c43f1047a349ac8f1925629,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.2
+      value: 1.875
       objectReference: {fileID: 0}
     - target: {fileID: 3971519474863773693, guid: 69c69b673c43f1047a349ac8f1925629,
         type: 3}
@@ -79,6 +79,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HiveEnemy_20pts
       objectReference: {fileID: 0}
+    - target: {fileID: 5638385320867643063, guid: 69c69b673c43f1047a349ac8f1925629,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 85d98749a8ff64d4c8279a7e7a0fd01c, type: 2}
     - target: {fileID: 8232660004499359471, guid: 69c69b673c43f1047a349ac8f1925629,
         type: 3}
       propertyPath: _pointValue

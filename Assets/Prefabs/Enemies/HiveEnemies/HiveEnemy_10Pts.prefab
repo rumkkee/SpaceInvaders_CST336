@@ -11,12 +11,12 @@ PrefabInstance:
     - target: {fileID: 690349401312099940, guid: 5747053d642e2c94483b014985356a38,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.1
+      value: 1.71875
       objectReference: {fileID: 0}
     - target: {fileID: 690349401312099940, guid: 5747053d642e2c94483b014985356a38,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.2
+      value: 1.875
       objectReference: {fileID: 0}
     - target: {fileID: 1271080394151592637, guid: 5747053d642e2c94483b014985356a38,
         type: 3}
@@ -84,6 +84,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HiveEnemy_10Pts
       objectReference: {fileID: 0}
+    - target: {fileID: 7530566798375398391, guid: 5747053d642e2c94483b014985356a38,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d52e6651ccb61754db42c080d9ae80df, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

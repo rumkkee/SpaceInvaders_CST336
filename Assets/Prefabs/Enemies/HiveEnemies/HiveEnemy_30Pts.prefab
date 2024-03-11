@@ -13,6 +13,11 @@ PrefabInstance:
       propertyPath: _pointValue
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 2574621830588060763, guid: d158bf24cb56f8d4b9f9e0b8dfb4ae3a,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 77ebcdc53b5bff34391d94f4affa5ba7, type: 2}
     - target: {fileID: 3411927293484554947, guid: d158bf24cb56f8d4b9f9e0b8dfb4ae3a,
         type: 3}
       propertyPath: m_Name
@@ -21,12 +26,12 @@ PrefabInstance:
     - target: {fileID: 4805212624234119624, guid: d158bf24cb56f8d4b9f9e0b8dfb4ae3a,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.1
+      value: 1.71875
       objectReference: {fileID: 0}
     - target: {fileID: 4805212624234119624, guid: d158bf24cb56f8d4b9f9e0b8dfb4ae3a,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.2
+      value: 1.875
       objectReference: {fileID: 0}
     - target: {fileID: 6528212374425468177, guid: d158bf24cb56f8d4b9f9e0b8dfb4ae3a,
         type: 3}

@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     }
     public void Defeat()
     {
+        ParticlesManager.instance.InstantiateParticles(ParticlesManager.instance.PlayerParticles(), transform.position);
         GameManager.instance.OnPlayerDefeated();
         // TODO: Give time for death animation, then Signal Game Manager to switch to death screen.
     }

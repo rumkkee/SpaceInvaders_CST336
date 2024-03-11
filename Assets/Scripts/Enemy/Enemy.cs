@@ -6,17 +6,20 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] protected int _pointValue;
 
-    public delegate void EnemyDefeated(int points);
+    public delegate void EnemyDefeated(Enemy enemy);
     public static event EnemyDefeated OnDefeat;
 
     public void Defeat()
     {
         DeathCalls();
+        ParticlesManager.instance.InstantiateParticles(ParticlesManager.instance.EnemyParticles(), transform.position);
         Destroy(this.gameObject);
     }
 
     public virtual void DeathCalls()
     {
-        OnDefeat(_pointValue);
+        OnDefeat(this);
     }
+
+    public int GetPoints() => _pointValue;
 }

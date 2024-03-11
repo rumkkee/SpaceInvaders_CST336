@@ -11,12 +11,12 @@ PrefabInstance:
     - target: {fileID: -8395274157895222720, guid: 3a410bf66fa7cae4ea56a0d7985d9470,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.1
+      value: 1.71875
       objectReference: {fileID: 0}
     - target: {fileID: -8395274157895222720, guid: 3a410bf66fa7cae4ea56a0d7985d9470,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.2
+      value: 1.875
       objectReference: {fileID: 0}
     - target: {fileID: 1390111859790677657, guid: 3a410bf66fa7cae4ea56a0d7985d9470,
         type: 3}
@@ -79,6 +79,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UFO Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7667537966049996755, guid: 3a410bf66fa7cae4ea56a0d7985d9470,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c57def8e0ca88c24dbfc517f735a817d, type: 2}
     m_RemovedComponents:
     - {fileID: -1713440524808313673, guid: 3a410bf66fa7cae4ea56a0d7985d9470, type: 3}
     m_RemovedGameObjects: []

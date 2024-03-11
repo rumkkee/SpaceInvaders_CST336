@@ -14,7 +14,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Awake()
     {
-        Enemy.OnDefeat += AddToScore;
+        Enemy.OnDefeat += AddToScoreHelper;
         SetScore(0);
         LoadHighScore();
     }
@@ -25,6 +25,11 @@ public class ScoreManager : MonoBehaviour
         {
             SetHighScore(0);
         }
+    }
+
+    private void AddToScoreHelper(Enemy enemy)
+    {
+        AddToScore(enemy.GetPoints());
     }
 
     private void AddToScore(int scoreToAdd)
@@ -65,6 +70,6 @@ public class ScoreManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        Enemy.OnDefeat -= AddToScore;
+        Enemy.OnDefeat -= AddToScoreHelper;
     }
 }

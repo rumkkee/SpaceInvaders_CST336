@@ -14,7 +14,9 @@ public class PlayerFire : MonoBehaviour
         {
             Vector2 spawnPos = new Vector2(transform.position.x, transform.position.y + 1f);
             _projectileInstance = Instantiate(_projectilePrefab, spawnPos, Quaternion.identity, this.transform);
+            AudioManager.instance.PlayPlayerFire();
             gameObject.GetComponentInChildren<Animator>().Play("PlayerFire");
+
         }
     }
 }

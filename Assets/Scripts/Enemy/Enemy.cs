@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     {
         DeathCalls();
         ParticlesManager.instance.InstantiateParticles(ParticlesManager.instance.EnemyParticles(), transform.position);
+        AudioManager.instance.PlayEnemyDefeated();
         Destroy(this.gameObject);
     }
 

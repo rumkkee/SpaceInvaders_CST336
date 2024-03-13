@@ -10,6 +10,8 @@ public class Barrier : MonoBehaviour
         if(projectile != null)
         {
             Destroy(projectile.gameObject);
+            ParticlesManager particlesManager = ParticlesManager.instance;
+            particlesManager.InstantiateParticles(particlesManager.BarrierParticles(), transform.position);
             Destroy(gameObject);
         }
 

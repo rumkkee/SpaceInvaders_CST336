@@ -1231,6 +1231,8 @@ MonoBehaviour:
     type: 3}
   playerParticlesPrefab: {fileID: 8061503067940769053, guid: 691bb18adc284734f89146f3b99061ca,
     type: 3}
+  barrierParticlesPrefab: {fileID: 6227197872791762107, guid: e2b489668c250b947abbde53875d8d1d,
+    type: 3}
 --- !u!1 &449301337
 GameObject:
   m_ObjectHideFlags: 0

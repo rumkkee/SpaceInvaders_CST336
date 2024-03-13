@@ -8,5 +8,6 @@ public class MainMenu : MonoBehaviour
     public void LoadGame()
     {
         SceneManager.LoadScene("GameScene");
+        GameManager.instance.ChangeState(GameState.InGame);
     }
 }

@@ -29,8 +29,16 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(OnCreditsSceneStart());
         }
+    }
 
-
+    public void ChangeState(GameState gameState)
+    {
+        switch (gameState)
+        {
+            case GameState.InGame:
+                StartCoroutine(OnGameStart());
+                break;
+        }
     }
 
     private IEnumerator OnGameStart()
@@ -106,4 +114,11 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
     }
+}
+
+public enum GameState
+{
+    MainMenu = 0,
+    InGame = 10,
+    Credits = 20
 }

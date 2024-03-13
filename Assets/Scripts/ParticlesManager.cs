@@ -6,6 +6,7 @@ public class ParticlesManager : MonoBehaviour
 {
     [SerializeField] private ParticleSystem enemyParticlesPrefab;
     [SerializeField] private ParticleSystem playerParticlesPrefab;
+    [SerializeField] private ParticleSystem barrierParticlesPrefab;
 
     public static ParticlesManager instance;
 
@@ -24,4 +25,5 @@ public class ParticlesManager : MonoBehaviour
 
     public ParticleSystem EnemyParticles() => enemyParticlesPrefab;
     public ParticleSystem PlayerParticles() => playerParticlesPrefab;
+    public ParticleSystem BarrierParticles() => barrierParticlesPrefab;
 }

@@ -10,6 +10,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource enemyDefeated;
     [SerializeField] private AudioSource playerDefeated;
 
+    [SerializeField] private AudioSource inGameMusic;
+
     public static AudioManager instance;
 
     private void Awake()
@@ -18,6 +20,11 @@ public class AudioManager : MonoBehaviour
         {
             instance = this;
         }
+    }
+
+    private void Start()
+    {
+        PlayMusic();
     }
 
     public void PlayPlayerFire()
@@ -38,6 +45,11 @@ public class AudioManager : MonoBehaviour
     public void PlayPlayerDefeated()
     {
         playerDefeated.Play();
+    }
+
+    public void PlayMusic()
+    {
+        inGameMusic.Play();
     }
 }
 

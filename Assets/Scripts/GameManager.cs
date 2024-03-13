@@ -29,8 +29,16 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(OnCreditsSceneStart());
         }
+    }
 
-
+    public void ChangeState(GameState gameState)
+    {
+        switch (gameState)
+        {
+            case GameState.InGame:
+                StartCoroutine(OnGameStart());
+                break;
+        }
     }
 
     private IEnumerator OnGameStart()
@@ -72,12 +80,17 @@ public class GameManager : MonoBehaviour
 
     public void OnPlayerDefeated()
     {
+        Destroy(Player.instance.gameObject);
+        StartCoroutine(EndGameRoutine());
+    }
+
+    public void OnPlayerWin()
+    {
         StartCoroutine(EndGameRoutine());
     }
 
     public IEnumerator EndGameRoutine()
     {
-        Destroy(Player.instance.gameObject);
         yield return new WaitForSeconds(1f);
         yield return StartCoroutine(WaitForLoadScene("CreditsScene"));
         Debug.Log("Entered Credits");
@@ -101,4 +114,11 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
     }
+}
+
+public enum GameState
+{
+    MainMenu = 0,
+    InGame = 10,
+    Credits = 20
 }

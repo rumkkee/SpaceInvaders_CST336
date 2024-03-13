@@ -8,6 +8,7 @@ public class EnemyProjectile : Projectile
     {
         _rb = GetComponent<Rigidbody2D>();
         _rb.AddForce(Vector2.down * _projectileSpeed, ForceMode2D.Impulse);
+        AudioManager.instance.PlayEnemyFire();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

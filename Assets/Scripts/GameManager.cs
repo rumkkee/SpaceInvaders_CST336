@@ -72,12 +72,17 @@ public class GameManager : MonoBehaviour
 
     public void OnPlayerDefeated()
     {
+        Destroy(Player.instance.gameObject);
+        StartCoroutine(EndGameRoutine());
+    }
+
+    public void OnPlayerWin()
+    {
         StartCoroutine(EndGameRoutine());
     }
 
     public IEnumerator EndGameRoutine()
     {
-        Destroy(Player.instance.gameObject);
         yield return new WaitForSeconds(1f);
         yield return StartCoroutine(WaitForLoadScene("CreditsScene"));
         Debug.Log("Entered Credits");

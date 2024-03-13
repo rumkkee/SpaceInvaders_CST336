@@ -28,5 +28,6 @@ public class EnemyManager : MonoBehaviour
         hiveBrain.StopAllCoroutines();
         ufoManager.StopAllCoroutines();
         Debug.Log("Space is now <b>purified.</b> Nobody came.");
+        GameManager.instance.OnPlayerWin();
     }
 }
